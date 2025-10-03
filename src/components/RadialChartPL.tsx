@@ -1,6 +1,6 @@
 
 
-import { TrendingUp } from "lucide-react"
+// import { TrendingUp } from "lucide-react"
 import {
   Label,
   PolarGrid,
@@ -12,8 +12,8 @@ import {
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
+  // CardDescription,
+  // CardFooter,
   CardHeader,
   CardTitle,
 } from "../components/ui/card"
