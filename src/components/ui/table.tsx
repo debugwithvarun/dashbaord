@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "../../lib/utils"
+import { cn } from "@/lib/utils"
 
 function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
@@ -72,7 +72,7 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
     <td
       data-slot="table-cell"
       className={cn(
-        "p-3 align-middle !text-left [&:has([role=checkbox])]:pr-0",
+        "p-3 align-middle [&:has([role=checkbox])]:pr-0",
         className
       )}
       {...props}

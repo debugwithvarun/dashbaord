@@ -1,7 +1,10 @@
+import TradeHistorytable from "../components/TradeHistoryTable"
 
 const TradeHistory = () => {
   return (
-    <div>TradeHistory</div>
+    <div className="w-full">
+      <TradeHistorytable/>
+    </div>
   )
 }
 
