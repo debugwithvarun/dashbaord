@@ -251,6 +251,7 @@ export default function TradeHistorytable() {
   const table = useReactTable({
     data,
     columns,
+    columnResizeMode: "onChange",
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     onSortingChange: setSorting,
@@ -311,7 +312,9 @@ export default function TradeHistorytable() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4"
+    
+    >
       {/* Filters */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
@@ -495,8 +498,13 @@ export default function TradeHistorytable() {
       </div>
 
       {/* Table */}
-      <div className="bg-background overflow-hidden rounded-md border">
-        <Table className="table-fixed">
+      <div className="bg-background overflow-hidden rounded-md border"
+      
+      >
+        <Table className=" overflow-x-auto"
+       
+          
+        >
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="hover:bg-transparent">
