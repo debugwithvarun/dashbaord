@@ -312,19 +312,20 @@ export default function TradeHistorytable() {
   }
 
   return (
-    <div className="space-y-4"
+    <div className="space-y-4 "
+  
     
     >
       {/* Filters */}
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 flex-wrap">
           {/* Filter by name or email */}
           <div className="relative">
             <Input
               id={`${id}-input`}
               ref={inputRef}
               className={cn(
-                "peer min-w-60 ps-9",
+                "peer min-w-50 ps-9",
                 Boolean(table.getColumn("name")?.getFilterValue()) && "pe-9"
               )}
               value={
@@ -437,7 +438,7 @@ export default function TradeHistorytable() {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           {/* Delete button */}
           {table.getSelectedRowModel().rows.length > 0 && (
             <AlertDialog>
@@ -498,11 +499,11 @@ export default function TradeHistorytable() {
       </div>
 
       {/* Table */}
-      <div className="bg-background overflow-hidden rounded-md border"
+      <div className="bg-background w-full rounded-md border"
       
       >
-        <Table className=" overflow-x-auto"
-       
+        <Table className=" overflow-x-auto w-full"
+     
           
         >
           <TableHeader>
@@ -599,7 +600,7 @@ export default function TradeHistorytable() {
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between gap-8">
+      <div className="flex items-center justify-between gap-8 flex-wrap">
         {/* Results per page */}
         <div className="flex items-center gap-3">
           <Label htmlFor={id} className="max-sm:sr-only">
