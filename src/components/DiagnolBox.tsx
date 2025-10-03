@@ -13,7 +13,7 @@ import { AverageWinLoss } from "./AvrageWinLoss"
 import { PieChart } from "./PieChart"
 import { PLchart } from "./plchart"
 import { RadialChartPL } from "./RadialChartPL"
-import { Card } from "./ui/card"
+// import { Card } from "./ui/card"
 // import { Card } from "./ui/card"
 
 export default function DiagnolBox() {
