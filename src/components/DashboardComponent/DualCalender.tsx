@@ -1,16 +1,15 @@
-
+"use client"
 
 import { useEffect, useState } from "react"
 import { format } from "date-fns"
-import type { DayButtonProps } from "react-day-picker"
+import type{ DayButtonProps } from "react-day-picker"
 
 import { cn } from "../../lib/utils"
-import { Calendar } from "../ui/calendar"
-import DiagnolBox from "../DiagnolBox"
+import { Calendar } from "../../components/ui/calendar"
 
 const GOOD_PRICE_THRESHOLD = 100
 
-export default function DualCalendar() {
+export default function Component() {
   const today = new Date()
   const [date, setDate] = useState<Date | undefined>(today)
 
@@ -45,13 +44,13 @@ export default function DualCalendar() {
         numberOfMonths={2}
         pagedNavigation
         showOutsideDays={false}
-        className="rounded-md border p-2 shadow-sm"
+        className="rounded-md border p-2"
         classNames={{
           months: "sm:flex-col md:flex-row gap-8",
           month:
             "relative first-of-type:before:hidden before:absolute max-md:before:inset-x-2 max-md:before:h-px max-md:before:-top-4 md:before:inset-y-2 md:before:w-px before:bg-border md:before:-left-4",
           weekday: "w-12",
-          day_button: "size-12 ",
+          day_button: "",
           today: "*:after:hidden",
         }}
         components={{
@@ -61,7 +60,6 @@ export default function DualCalendar() {
         }}
         disabled={isDateDisabled}
       />
-    <DiagnolBox />
     </div>
   )
 }
@@ -72,7 +70,6 @@ function DayButton(props: DayButtonProps & { prices: Record<string, number> }) {
   const isGoodPrice = price < GOOD_PRICE_THRESHOLD
 
   return (
-    
     <button {...buttonProps}>
       <span className="flex flex-col">
         {props.children}

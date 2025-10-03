@@ -13,13 +13,14 @@ import { AverageWinLoss } from "./AvrageWinLoss"
 import { PieChart } from "./PieChart"
 import { PLchart } from "./plchart"
 import { RadialChartPL } from "./RadialChartPL"
+import { Card } from "./ui/card"
 // import { Card } from "./ui/card"
 
 export default function DiagnolBox() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline"></Button>
+        <Button variant="outline">Open Me</Button>
       </DialogTrigger>
       <DialogContent className="flex flex-col gap-0 p-0 sm:max-h-[min(640px,80vh)] sm:max-w-lg [&>button:last-child]:hidden">
         <div className="overflow-y-auto scrollbar-hide">
@@ -32,15 +33,15 @@ export default function DiagnolBox() {
 
             </DialogTitle>
             <DialogDescription asChild>
-              <div className="p-6">
-                <div className="[&_strong]:text-foreground space-y-4 [&_strong]:font-semibold">
+              <div className="p-3">
+                <div className="[&_strong]:text-foreground space-y-2 [&_strong]:font-semibold">
                   <div className="space-y-1">
                     {/* <p>
                       <strong>Net Cumulative P&L</strong>
                     </p> */}
                     <PLchart/>
                   </div>
-                  <div className="space-y-1 grid grid-cols-2 gap-4">
+                  <div className="space-y-1 grid grid-cols-2 gap-2">
                     {/* <p>
                       <strong>Password Reset Process</strong>
                     </p> */}
@@ -53,6 +54,54 @@ export default function DiagnolBox() {
                   </div>
                   <div className="space-y-1">
                     <PieChart/>
+                    
+                  </div>
+                  <div className="space-y-1 ">
+                    <p>
+                      <strong>Instrument Performance</strong>
+                    </p>
+                      <div className="flex flex-col gap-2">
+                      <div className="bg-card text-card-foreground flex items-center justify-between px-4 w-full gap-3 rounded-xl border py-3 shadow-sm">
+                      <div className="flex flex-col gap-2">
+                        <strong>MSFT</strong>
+                        <p>6 trades</p>
+                      </div>
+                      <div>
+                        <p className="text-green-600">+₹67295.09</p>
+                      </div>
+                    </div>
+                    <div className="bg-card text-card-foreground flex items-center justify-between px-4 w-full gap-6 rounded-xl border py-3 shadow-sm">
+                      <div className="flex flex-col gap-2">
+                        <strong>MSFT</strong>
+                        <p>6 trades</p>
+                      </div>
+                      <div>
+                      <p className="text-red-600">-₹67295.09</p>
+
+                      </div>
+                    </div>
+                    <div className="bg-card text-card-foreground flex items-center justify-between px-4 w-full gap-6 rounded-xl border py-3 shadow-sm">
+                      <div className="flex flex-col gap-2">
+                        <strong>MSFT</strong>
+                        <p>6 trades</p>
+                      </div>
+                      <div>
+                      <p className="text-green-600">+₹67295.09</p>
+
+                      </div>
+                    </div>
+                    <div className="bg-card text-card-foreground flex items-center justify-between px-4 w-full gap-6 rounded-xl border py-3 shadow-sm">
+                      <div className="flex flex-col gap-2">
+                        <strong>MSFT</strong>
+                        <p>6 trades</p>
+                      </div>
+                      <div>
+                      <p className="text-red-600">-₹67295.09</p>
+
+                      </div>
+                    </div>
+                      </div>
+   
                     
                   </div>
                 </div>
