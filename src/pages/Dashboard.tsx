@@ -3,7 +3,7 @@ import Dropdown from "../components/DashboardComponent/Dropdown"
 import DualCalendar from "../components/DashboardComponent/DualCalender"
 import EquityCurve from "../components/DashboardComponent/EquityCurve"
 import MetricCard from "../components/DashboardComponent/MetricCard"
-// import OpenTrades from "../components/DashboardComponent/OpenTrades"
+import OpenTrades from "../components/DashboardComponent/OpenTrades"
 import DiagnolBox from "../components/DiagnolBox"
 
 
@@ -15,12 +15,12 @@ const Dashboard = () => {
         <EquityCurve />
         <Dropdown />
       </div>
-      <div className="w-full flex flex-col lg:flex-row gap-2">
+      <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-2">
         
           <DualCalendar />
-          <DiagnolBox />
-          {/* <OpenTrades /> */}
+          <OpenTrades />
       </div>
+          <DiagnolBox />
 
     </div>
   )
