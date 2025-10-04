@@ -10,7 +10,6 @@ import {
   DialogTrigger,
 } from "../components/ui/dialog"
 import { AverageWinLoss } from "./AvrageWinLoss"
-import { PieChart } from "./PieChart"
 import { PLchart } from "./plchart"
 import { RadialChartPL } from "./RadialChartPL"
 // import { Card } from "./ui/card"
@@ -52,10 +51,7 @@ export default function DiagnolBox() {
                   <div className="space-y-1">
                       <AverageWinLoss/>
                   </div>
-                  <div className="space-y-1">
-                    <PieChart/>
-                    
-                  </div>
+           
                   <div className="space-y-1 ">
                     <p>
                       <strong>Instrument Performance</strong>

@@ -18,7 +18,7 @@ const MetricCard = () => {
   return (
     <div className="w-full flex flex-col gap-2 ">
       <div className="flex flex-1 w-full justify-between">
-        <h4 className="scroll-m-20 text-lg font-medium tracking-tight">
+        <h4 className="scroll-m-20 font-medium ">
           Performance Metrics
         </h4>
         <TimeToggle
