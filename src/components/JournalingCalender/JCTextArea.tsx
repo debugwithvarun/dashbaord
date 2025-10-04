@@ -1,5 +1,5 @@
 import { useId } from "react"
-
+import { Mic } from 'lucide-react';
 import { Label } from "../ui/label"
 import { Textarea } from "../ui/textarea"
 import { Button } from "../ui/button"
@@ -22,7 +22,7 @@ export default function JCTextArea({labelName,placeholder}:JCProps) {
       <div className="flex gap-2">
       <Button variant={"outline"}>Save</Button>
       <Button variant={"outline"}>Image</Button>
-      <Button variant={"outline"}>Voice</Button>
+      <Button variant={"outline"}><Mic/></Button>
       </div>
     </div>
   )
