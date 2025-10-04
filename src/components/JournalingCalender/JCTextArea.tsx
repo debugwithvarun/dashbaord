@@ -17,7 +17,7 @@ export default function JCTextArea({labelName,placeholder}:JCProps) {
       <Textarea
         id={id}
         placeholder={placeholder}
-        className="field-sizing-content min-h-20 resize-none py-1.75"
+        className="field-sizing-content break-all min-h-20 resize-none py-1.75"
       />
       <div className="flex gap-2 items-center justify-end w-full">
       <Button variant={"outline"}>Save</Button>
