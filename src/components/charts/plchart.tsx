@@ -7,13 +7,13 @@ import {
 //   CardFooter,
   CardHeader,
   CardTitle,
-} from "../components/ui/card"
-import type { ChartConfig } from "../components/ui/chart"
+} from "../../components/ui/card"
+import type { ChartConfig } from "../../components/ui/chart"
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "../components/ui/chart"
+} from "../../components/ui/chart"
 export const description = "An area chart with axes"
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },

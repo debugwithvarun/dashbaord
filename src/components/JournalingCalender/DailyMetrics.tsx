@@ -1,6 +1,6 @@
-import { AverageWinLoss } from "../AvrageWinLoss"
-import { PLchart } from "../plchart"
-import { RadialChartPL } from "../RadialChartPL"
+import { AverageWinLoss } from "../charts/AvrageWinLoss"
+import { PLchart } from "../charts/plchart"
+import { RadialChartPL } from "../charts/RadialChartPL"
 
 
 const DailyMetrics = () => {

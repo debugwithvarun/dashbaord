@@ -1,4 +1,4 @@
-import TradeHistorytable from "../components/TradeHistoryTable"
+import TradeHistorytable from "../components/TradeHistory/TradeHistoryTable"
 
 const TradeHistory = () => {
   return (

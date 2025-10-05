@@ -36,7 +36,7 @@ import {
   TrashIcon,
 } from "lucide-react"
 
-import { cn } from "../lib/utils"
+import { cn } from "../../lib/utils"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -47,10 +47,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "./ui/alert-dialog"
-import { Badge } from "./ui/badge"
-import { Button } from "./ui/button"
-import { Checkbox } from "./ui/checkbox"
+} from "../ui/alert-dialog"
+import { Badge } from "../ui/badge"
+import { Button } from "../ui/button"
+import { Checkbox } from "../ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -61,26 +61,26 @@ import {
   DropdownMenuShortcut,
 
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu"
-import { Input } from "./ui/input"
-import { Label } from "./ui/label"
+} from "../ui/dropdown-menu"
+import { Input } from "../ui/input"
+import { Label } from "../ui/label"
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
-} from "./ui/pagination"
+} from "../ui/pagination"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "./ui/popover"
+} from "../ui/popover"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select"
+} from "../ui/select"
 import {
   Table,
   TableBody,
@@ -88,7 +88,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "./ui/table"
+} from "../ui/table"
 
 type Item = {
   id: string

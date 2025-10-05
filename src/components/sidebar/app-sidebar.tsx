@@ -10,10 +10,10 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
     useSidebar
-} from "../components/ui/sidebar"
-import { items } from "../menudata/SidebarMenuItem"
+} from "../../components/ui/sidebar"
+import { items } from "../../menudata/SidebarMenuItem"
 import UserProfileMenu from "./userProfile"
-import { useTheme } from "../hooks/useTheme"
+import { useTheme } from "../../hooks/useTheme"
 
 export function AppSidebar() {
     const location = useLocation()

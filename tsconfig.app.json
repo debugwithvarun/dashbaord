@@ -24,5 +24,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "src/components/JournalingCalender/comp-510.tsx"]
+  "include": ["src", "src/components/JournalingCalender/comp-510.tsx", "src/components/JournalingCalender/Timeline.tsx"]
 }
