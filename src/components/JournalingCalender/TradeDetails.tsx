@@ -70,6 +70,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table"
+import TradePopUp from "./TradePopUp"
 
 type Item = {
   id: string
@@ -195,6 +196,7 @@ export default function TradeDetails() {
   const id = useId()
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
+  const [showPopUp,setShowPopUp]=useState(false)
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 5,
@@ -247,7 +249,7 @@ export default function TradeDetails() {
 
   return (
     <div className="space-y-4 ">
-   
+      {showPopUp && <TradePopUp setShowPopUp={setShowPopUp}/>}
 
       {/* Table */}
       <div className="bg-background w-full rounded-md border"
@@ -325,6 +327,7 @@ export default function TradeDetails() {
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
+                  onClick={()=>setShowPopUp(true)}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id} className="last:py-0">

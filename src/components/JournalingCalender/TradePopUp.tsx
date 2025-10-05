@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { Card } from "../ui/card";
-import { ArrowDown, TrendingUp } from "lucide-react";
+import { ArrowDown,  TrendingUp, X } from "lucide-react";
 import TabMenu from "./TabMenu";
 
-const TradePopUp = () => {
+type TradePopUpProps={
+    setShowPopUp:(e:boolean)=>void
+}
+const TradePopUp = ({setShowPopUp}:TradePopUpProps) => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -13,10 +16,16 @@ const TradePopUp = () => {
   }, []);
 
   return (
-    <div className=' flex justify-center items-center data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/80'>
+    <div className=' flex justify-center items-center data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/80'
+    onClick={()=>setShowPopUp(false)}
+    >
 
-        <Card className="w-[80%] flex flex-col h-[80vh] overflow-y-auto overflow-x-hidden scrollbar-hide !py-0">
-            <div className="flex w-full border-b gap-2 p-4 flex-col sticky top-0 z-50 bg-background">
+        <Card className="w-[80%] flex flex-col h-[80vh] overflow-y-auto overflow-x-hidden scrollbar-hide !py-0"
+        onClick={(e)=>e.stopPropagation()}
+        >
+            <div className="flex w-full border-b gap-2 p-4 flex-col sticky top-0 z-50 bg-background relative">
+            <X className="absolute cursor-pointer top-4 right-4" onClick={()=>setShowPopUp(false)}/>
+
                 <div className="flex gap-2 items-center">
                     <h2 className="text-lg font-medium">NIFTY</h2>
                     <span className="flex items-center gap-1 text-sm  py-1 px-3 bg-green-400/30 text-green-600 rounded-2xl"><TrendingUp/>Long</span>

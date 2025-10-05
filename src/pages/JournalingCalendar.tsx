@@ -2,13 +2,12 @@ import AIInsight from "../components/JournalingCalender/AIInsight"
 import DailyMetrics from "../components/JournalingCalender/DailyMetrics"
 import JCTextArea from "../components/JournalingCalender/JCTextArea"
 import TradeDetails from "../components/JournalingCalender/TradeDetails"
-import TradePopUp from "../components/JournalingCalender/TradePopUp"
+
 import Tradingcalender from "../components/JournalingCalender/TradingCalender"
 
 const JournalingCalendar = () => {
   return (
     <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-4 ">
-        <TradePopUp/>
   
       <div className="md:max-w-[100%] flex flex-col gap-4 ">
         <JCTextArea 
