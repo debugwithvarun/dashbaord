@@ -4,6 +4,7 @@ import type { DayButtonProps } from "react-day-picker"
 
 import { cn } from "../../lib/utils"
 import { Calendar } from "../../components/ui/calendar"
+import DiagnolBox from "../charts/DiagnolBox"
 
 const GOOD_PRICE_THRESHOLD = 100
 
@@ -50,7 +51,8 @@ export default function Component() {
         onSelect={setDate}
         numberOfMonths={2}
         pagedNavigation
-        showOutsideDays={false}
+        showOutsideDays={true}
+        fixedWeeks
         className="w-full max-w-none rounded-md border p-2 flex"
         style={{ width: '-webkit-fill-available' }}
         classNames={{
@@ -146,13 +148,16 @@ export default function Component() {
 }
 
 function DayButton(props: DayButtonProps & { prices: Record<string, number> }) {
-  const { day, modifiers, prices, ...buttonProps } = props
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { day, modifiers, prices, onClick, ...buttonProps } = props
   const price = prices[format(day.date, "yyyy-MM-dd")]
   const isGoodPrice = price < GOOD_PRICE_THRESHOLD
   const isDisabled = modifiers.disabled
 
   return (
-    <button 
+    <DiagnolBox
+    trigger={
+      <button 
       {...buttonProps}
       className={cn(
         "h-10 sm:h-12 w-full p-0.5 sm:p-1 font-normal text-xs sm:text-sm flex items-center justify-center",
@@ -188,5 +193,9 @@ function DayButton(props: DayButtonProps & { prices: Record<string, number> }) {
         )}
       </span>
     </button>
+    }/>
+
+   
+ 
   )
 }

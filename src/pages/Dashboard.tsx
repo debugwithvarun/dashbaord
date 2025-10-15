@@ -4,7 +4,7 @@ import DualCalendar from "../components/DashboardComponent/DualCalender"
 import EquityCurve from "../components/DashboardComponent/EquityCurve"
 import MetricCard from "../components/DashboardComponent/MetricCard"
 import OpenTrades from "../components/DashboardComponent/OpenTrades"
-import DiagnolBox from "../components/charts/DiagnolBox"
+// import DiagnolBox from "../components/charts/DiagnolBox"
 
 
 const Dashboard = () => {
@@ -20,7 +20,7 @@ const Dashboard = () => {
           <DualCalendar />
           <OpenTrades />
       </div>
-          <DiagnolBox />
+          {/* <DiagnolBox /> */}
 
     </div>
   )

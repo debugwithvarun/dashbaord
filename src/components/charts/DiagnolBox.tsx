@@ -15,11 +15,17 @@ import { RadialChartPL } from "./RadialChartPL"
 // import { Card } from "./ui/card"
 // import { Card } from "./ui/card"
 
-export default function DiagnolBox() {
+import React from "react";
+
+type DiagnolBoxProps = {
+  trigger: React.ReactNode;
+};
+const DiagnolBox: React.FC<DiagnolBoxProps> = ({trigger}) => {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Open Me</Button>
+      <DialogTrigger >
+        {/* <Button variant="outline">Open Me</Button> */}
+        {trigger}
       </DialogTrigger>
       <DialogContent className="flex flex-col gap-0 p-0 sm:max-h-[min(640px,80vh)] sm:max-w-lg [&>button:last-child]:hidden">
         <div className="overflow-y-auto scrollbar-hide">
@@ -115,3 +121,5 @@ export default function DiagnolBox() {
     </Dialog>
   )
 }
+
+export default DiagnolBox;
