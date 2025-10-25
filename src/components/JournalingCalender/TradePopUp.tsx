@@ -28,8 +28,8 @@ const TradePopUp = ({setShowPopUp}:TradePopUpProps) => {
 
                 <div className="flex gap-2 items-center">
                     <h2 className="text-lg font-medium">NIFTY</h2>
-                    <span className="flex items-center gap-1 text-sm  py-1 px-3 bg-green-400/30 text-green-600 rounded-2xl"><TrendingUp/>Long</span>
-                    <span className="flex items-center gap-1 text-sm  py-1 px-3 bg-red-400/30 text-red-600 rounded-2xl"><ArrowDown/>Win</span>
+                    <span className="flex items-center gap-1 text-[12px]  py-1 px-3 bg-green-600/30 text-green-600 rounded-2xl"><TrendingUp size={12}/>Long</span>
+                    <span className="flex items-center gap-1 text-[12px]  py-1 px-3 bg-red-600/30 text-red-600 rounded-2xl"><ArrowDown size={12}/>Win</span>
                 </div>
                 <div className="flex gap-2 mb-2 items-center">
                     <span className="text-[var(--color-muted-foreground)] text-md">00:00:00</span>

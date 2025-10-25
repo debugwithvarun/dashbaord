@@ -5,7 +5,7 @@ import type {
   FilterFn,
   VisibilityState,
   PaginationState,
- 
+
   SortingState,
 } from "@tanstack/react-table"
 import {
@@ -175,7 +175,7 @@ const columns: ColumnDef<Item>[] = [
       <Badge
         className={cn(
           row.getValue("status") === "Inactive" &&
-            "bg-muted-foreground/60 text-primary-foreground"
+          "bg-muted-foreground/60 text-primary-foreground"
         )}
       >
         {row.getValue("status")}
@@ -312,10 +312,7 @@ export default function TradeHistorytable() {
   }
 
   return (
-    <div className="space-y-4 "
-  
-    
-    >
+    <div className="space-y-4 ">
       {/* Filters */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2 flex-wrap">
@@ -500,11 +497,11 @@ export default function TradeHistorytable() {
 
       {/* Table */}
       <div className="bg-background w-full rounded-md border"
-      
+
       >
         <Table className=" overflow-x-auto w-full"
-     
-          
+
+
         >
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -520,7 +517,7 @@ export default function TradeHistorytable() {
                         <div
                           className={cn(
                             header.column.getCanSort() &&
-                              "flex h-full cursor-pointer items-center justify-between gap-2 select-none"
+                            "flex h-full cursor-pointer items-center justify-between gap-2 select-none"
                           )}
                           onClick={header.column.getToggleSortingHandler()}
                           onKeyDown={(e) => {
@@ -638,8 +635,8 @@ export default function TradeHistorytable() {
               {Math.min(
                 Math.max(
                   table.getState().pagination.pageIndex *
-                    table.getState().pagination.pageSize +
-                    table.getState().pagination.pageSize,
+                  table.getState().pagination.pageSize +
+                  table.getState().pagination.pageSize,
                   0
                 ),
                 table.getRowCount()
@@ -712,7 +709,7 @@ export default function TradeHistorytable() {
           </Pagination>
         </div>
       </div>
-   
+
     </div>
   )
 }
@@ -738,9 +735,9 @@ function RowActions() {
             <span>Edit</span>
             <DropdownMenuShortcut>⌘E</DropdownMenuShortcut>
           </DropdownMenuItem>
-     
+
         </DropdownMenuGroup>
-  
+
 
         <DropdownMenuItem className="text-destructive focus:text-destructive">
           <span>Delete</span>

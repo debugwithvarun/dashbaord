@@ -17,6 +17,7 @@ import {
   ChartTooltipContent,
 } from "../../components/ui/chart"
 import TimeToggle from "./Timetoggle"
+import InfoButton from "./InfoButton"
 // import Timetoggle from "./Timetoggle"
 
 export const description = "A multiple bar chart"
@@ -51,7 +52,11 @@ export function ChartBarMultiple({chartTitle}: ChartAreaDefaultProps) {
     <Card className="max-h-105">
     <CardHeader>
         <div className="w-full flex items-center justify-between">
-        <CardTitle>{chartTitle}</CardTitle>
+     <div className="flex justify-start items-center gap-2">
+            <CardTitle className=" whitespace-nowrap  items-center">{chartTitle}
+            </CardTitle>
+            <span><InfoButton /></span>
+          </div>
         <TimeToggle/>
         </div>
        

@@ -53,7 +53,7 @@ export default function Component() {
         pagedNavigation
         showOutsideDays={true}
         fixedWeeks
-        className="w-full max-w-none rounded-md border p-2 flex"
+        className="w-full max-w-none rounded-md border p-2 flex shadow-sm"
         style={{ width: '-webkit-fill-available' }}
         classNames={{
           months: "flex flex-col lg:flex-row gap-2 sm:gap-4 lg:gap-8 w-full justify-center",

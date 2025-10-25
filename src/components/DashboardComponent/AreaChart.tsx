@@ -13,6 +13,7 @@ import {
   ChartTooltipContent,
 } from "../../components/ui/chart"
 import TimeToggle from "./Timetoggle"
+import InfoButton from "./InfoButton"
 
 interface ChartData {
   timestamp: string
@@ -29,35 +30,35 @@ type ChartAreaDefaultProps = {
   timeRange?: string
   selectedRange?: TimeRange
   onRangeChange?: (range: TimeRange) => void
-  size:number
+  size: number
 }
 
 function formatTime(timestamp: string, timeRange: string = '1d'): string {
   const date = new Date(timestamp)
-  
+
   switch (timeRange) {
     case '1d':
-      return date.toLocaleTimeString('en-US', { 
-        hour: '2-digit', 
+      return date.toLocaleTimeString('en-US', {
+        hour: '2-digit',
         minute: '2-digit',
-        hour12: false 
+        hour12: false
       })
     case '1w':
-      return date.toLocaleDateString('en-US', { 
+      return date.toLocaleDateString('en-US', {
         weekday: 'short'
       })
     case '1m':
-      return date.toLocaleDateString('en-US', { 
-        month: 'short', 
-        day: 'numeric' 
+      return date.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric'
       })
     case '1y':
-      return date.toLocaleDateString('en-US', { 
-        month: 'short' 
+      return date.toLocaleDateString('en-US', {
+        month: 'short'
       })
     default:
-      return date.toLocaleDateString('en-US', { 
-        month: 'short', 
+      return date.toLocaleDateString('en-US', {
+        month: 'short',
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit'
@@ -65,7 +66,7 @@ function formatTime(timestamp: string, timeRange: string = '1d'): string {
   }
 }
 
-export function ChartAreaDefault({chartTitle,data,currentValue,prevValue,timeRange = '1d',selectedRange,onRangeChange,size}: ChartAreaDefaultProps) {
+export function ChartAreaDefault({ chartTitle, data, currentValue, prevValue, timeRange = '1d', selectedRange, onRangeChange, size }: ChartAreaDefaultProps) {
   // console.log(data)
 
   const chartData = data.map((item) => ({
@@ -88,17 +89,21 @@ export function ChartAreaDefault({chartTitle,data,currentValue,prevValue,timeRan
       color: "var(--chart-2)",
     },
   }
-  const cardheight=`max-h-${size*7}`
-  const chartHeight=`h-${(size*4)}`
-  console.log(cardheight,chartHeight)
+  const cardheight = `max-h-${size * 7}`
+  const chartHeight = `h-${(size * 4)}`
+  console.log(cardheight, chartHeight)
   return (
     <Card className={cardheight}>
       <CardHeader>
         <div className="w-full flex items-center justify-between ">
-        <CardTitle>{chartTitle}</CardTitle>
-        {(currentValue !== undefined && prevValue !== undefined) ? (
-         <span className={`${currentValue-prevValue >=0 ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} px-2 text-[11px] rounded-sm py-1 `}>{badgeValue}</span>
-        ):<TimeToggle selectedRange={selectedRange ?? '1d'} onRangeChange={onRangeChange ?? (() => {})} />}
+          <div className="flex justify-start items-center gap-2">
+            <CardTitle className=" whitespace-nowrap  items-center">{chartTitle}
+            </CardTitle>
+            <span><InfoButton /></span>
+          </div>
+          {(currentValue !== undefined && prevValue !== undefined) ? (
+            <span className={`${currentValue - prevValue >= 0 ? 'bg-green-600/10 text-green-600' : 'bg-red-600/10 text-red-600'} px-2 text-[11px] rounded-sm py-1 `}>{badgeValue}</span>
+          ) : <TimeToggle selectedRange={selectedRange ?? '1d'} onRangeChange={onRangeChange ?? (() => { })} />}
         </div>
         <h3></h3>
 
@@ -129,7 +134,7 @@ export function ChartAreaDefault({chartTitle,data,currentValue,prevValue,timeRan
             <Area
               dataKey="value"
               type="monotone"
-             
+
               fill="var(--color-value)"
               fillOpacity={0.3}
               stroke="var(--color-value)"

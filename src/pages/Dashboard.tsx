@@ -1,5 +1,6 @@
 
 import Dropdown from "../components/DashboardComponent/Dropdown"
+import DashboardShimmer from "../components/DashboardComponent/DshboardShimmer"
 import DualCalendar from "../components/DashboardComponent/DualCalender"
 import EquityCurve from "../components/DashboardComponent/EquityCurve"
 import MetricCard from "../components/DashboardComponent/MetricCard"
@@ -8,6 +9,7 @@ import OpenTrades from "../components/DashboardComponent/OpenTrades"
 
 
 const Dashboard = () => {
+  return <DashboardShimmer/>
   return (
     <div className="w-full items-center flex flex-col gap-2">
       <MetricCard />
