@@ -9,6 +9,7 @@ import StrategiesPage from './pages/StrategiesPage'
 import TradingSimulator from './pages/TradingSimulator'
 import EducationSection from './pages/EducationSection'
 import SupportCenter from './pages/SupportCenter'
+import { Toolbox } from './components/Add-trades/Toolbox'
 // import BreadcumbMenu from './components/BreadcumbMenu'
 
 const App = () => {
@@ -22,7 +23,9 @@ const App = () => {
           <SidebarTrigger />
           {/* <BreadcumbMenu /> */}
         </header>
-        
+        <span className='fixed right-5 bottom-5 z-20'>
+          <Toolbox/>
+        </span>
         {/* Page content */}
         <div className="flex-1 p-4 pt-14">
           <Routes>
