@@ -15,26 +15,7 @@ export function Toolbox() {
   const [isOpen, setIsOpen] = useState(false)
 
 
-  const tools = [
-    {
-      icon: PenTool,
-      label: "Manual Entry",
-      angle: 0,
 
-    },
-    {
-      icon: Upload,
-      label: "Upload Excel",
-      angle: -45,
-
-    },
-    {
-      icon: Link2,
-      label: "API Integration",
-      angle: -90,
-
-    }
-  ]
 
 
   const getPosition = (angle: number, isOpen: boolean) => {
@@ -143,7 +124,7 @@ export function Toolbox() {
                      
                     }}
                   >
-                    <PenTool className="h-5 w-5" />
+                    <Link2 className="h-5 w-5" />
                   </Button>
 
                 </UploadDialog>
