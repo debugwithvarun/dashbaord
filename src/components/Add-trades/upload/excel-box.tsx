@@ -13,7 +13,7 @@ import {
   formatBytes,
   useFileUpload,
 } from "../../../hooks/use-file-upload"
-import { Button } from "../../../components/ui/button"
+import { Button } from "../../ui/button"
 
 
 

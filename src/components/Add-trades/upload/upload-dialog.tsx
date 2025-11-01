@@ -11,19 +11,30 @@ import {
   AlertDialogTrigger,
 } from "../../../components/ui/alert-dialog"
 
-import UploadBox from "./upload-box"
+import UploadBox from "./excel-box"
 
-export default function UploadDialog({children}:{children:ReactNode}) {
+
+
+export default function UploadDialog({children,name}:{children:ReactNode,name:string}) {
+
   return (
-    <AlertDialog>
+    <AlertDialog >
       <AlertDialogTrigger asChild>
        {children}
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="w-full scrollbar-none max-h-[70%]">
         <AlertDialogHeader>
-          <AlertDialogTitle>Upload File</AlertDialogTitle>
-            <UploadBox/>
+          <AlertDialogTitle>
+            {/* {name==="manual" && "Manual Entry"} */}
+            {name==="excel" && "Upload File"}
+            {name==="api" && "API Intregation"}
+            </AlertDialogTitle>
+            
+            
+            {name==="excel" && <UploadBox/>}
+            {name==="api" && <UploadBox/>}
         </AlertDialogHeader>
+
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction>Save</AlertDialogAction>
