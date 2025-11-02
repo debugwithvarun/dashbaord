@@ -161,10 +161,8 @@ export default function ManualBox({
 
                                 <TableHead className="w-20">Symbol</TableHead>
                                 <TableHead className="w-16 text-center">Type</TableHead>
-                                <TableHead className="w-24">Buy Date</TableHead>
-                                <TableHead className="w-24">Sell Date</TableHead>
-                                <TableHead className="w-24">Buy Price</TableHead>
-                                <TableHead className="w-24">Sell Price</TableHead>
+                                <TableHead className="w-24">Date</TableHead>
+                                <TableHead className="w-24">Price</TableHead>
                                 <TableHead className="w-24">Quantity</TableHead>
                                 <TableHead className="min-w-48 ">Notes</TableHead>
 
@@ -213,18 +211,14 @@ export default function ManualBox({
                                         </Select>
                                     </TableCell>
 
-                                    {/* buy date  */}
-                                    <TableCell>
+                                    {/* Date  */}
+                                    <TableCell  className="flex flex-col gap-2">
                                         <Input
                                             type="datetime-local"
                                             value={trade.buyDate}
                                             onChange={(e) => onChange(index, "buyDate", e.target.value)}
                                             className="text-sm h-9"
                                         />
-                                    </TableCell>
-
-                                    {/* sell date  */}
-                                    <TableCell>
                                         <Input
                                             type="datetime-local"
                                             value={trade.sellDate}
@@ -233,23 +227,23 @@ export default function ManualBox({
                                         />
                                     </TableCell>
 
-                                    {/* buy price  */}
-                                    <TableCell>
+                                   
+
+                                    {/* Price  */}
+                                    <TableCell className="flex flex-col gap-2">
                                         <PriceInput
                                             value={trade.buyPrice}
                                             onChange={(val) => onChange(index, "buyPrice", val)}
                                             placeholder="0.00"
                                         />
-                                    </TableCell>
-
-                                    {/* sell price  */}
-                                    <TableCell>
                                         <PriceInput
                                             value={trade.sellPrice}
                                             onChange={(val) => onChange(index, "sellPrice", val)}
                                             placeholder="0.00"
                                         />
                                     </TableCell>
+
+                                 
 
 
                                     {/* quantity  */}
