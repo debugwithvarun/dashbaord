@@ -18,6 +18,7 @@ import {
     SelectValue,
 } from "../../../components/ui/select";
 import { Trash2, Plus, ChevronUp, ChevronDown, Minus } from "lucide-react";
+import { Textarea } from "../../ui/textarea";
 
 interface TradeFormData {
     stockName: string;
@@ -28,9 +29,8 @@ interface TradeFormData {
     buyDate: string;
     sellDate: string;
     quantity: string;
-    brokerName: string;
-    tradetype: string;
-    exchange: string;
+    notes: string
+
 }
 
 interface ManualBoxProps {
@@ -68,7 +68,7 @@ const PriceInput = ({
                 onChange={(e) => onChange(e.target.value)}
                 step="0.05"
                 min="0"
-                className="flex-1 text-sm h-9 w-fit max-w-18 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                className="flex-1 text-sm h-9 w-22 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
             <div className="absolute right-0 top-0 h-full flex flex-col gap-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-auto">
                 <button
@@ -143,38 +143,37 @@ const QuantityInput = ({
 
 export default function ManualBox({
     trades,
-  
+
     onRemoveRow,
     onChange,
 }: ManualBoxProps) {
     return (
         <div className="w-full flex flex-col h-full">
-       
+
 
             {/* DESKTOP TABLE VIEW - Hidden on mobile */}
             <div className="hidden lg:block w-full flex-1 ">
-                <div className="min-w-[1400px] p-4 py-2">
+                <div className="max-w-fit p-4 py-2">
                     <Table>
                         <TableHeader>
-                            <TableRow className="bg-muted/50 hover:bg-muted/50 sticky top-0 z-10">
+                            <TableRow className="bg-muted/50 hover:bg-muted/50 sticky top-0 z-10 ">
                                 <TableHead className="w-16 text-center">Action</TableHead>
-                                <TableHead className="w-32">Stock Name</TableHead>
+
                                 <TableHead className="w-20">Symbol</TableHead>
                                 <TableHead className="w-16 text-center">Type</TableHead>
+                                <TableHead className="w-24">Buy Date</TableHead>
+                                <TableHead className="w-24">Sell Date</TableHead>
                                 <TableHead className="w-24">Buy Price</TableHead>
                                 <TableHead className="w-24">Sell Price</TableHead>
-                                <TableHead className="w-32">Buy Date</TableHead>
-                                <TableHead className="w-32">Sell Date</TableHead>
-                                <TableHead className="w-20">Qty</TableHead>
-                                <TableHead className="w-24">Broker</TableHead>
-                                <TableHead className="w-24">Trade Type</TableHead>
-                                <TableHead className="w-16">Exchange</TableHead>
+                                <TableHead className="w-24">Quantity</TableHead>
+                                <TableHead className="min-w-48 ">Notes</TableHead>
+
                             </TableRow>
                         </TableHeader>
 
                         <TableBody>
                             {trades.map((trade, index) => (
-                                <TableRow key={index} className="hover:bg-muted/30">
+                                <TableRow key={index} className="hover:bg-muted/30 ">
                                     <TableCell className="text-center">
                                         <button
                                             onClick={() => onRemoveRow(index)}
@@ -187,15 +186,8 @@ export default function ManualBox({
                                         </button>
                                     </TableCell>
 
-                                    <TableCell>
-                                        <Input
-                                            placeholder="e.g., Reliance"
-                                            value={trade.stockName}
-                                            onChange={(e) => onChange(index, "stockName", e.target.value)}
-                                            className="text-sm h-9"
-                                        />
-                                    </TableCell>
 
+                                    {/* symbol  */}
                                     <TableCell>
                                         <Input
                                             placeholder="e.g., RIL"
@@ -205,6 +197,7 @@ export default function ManualBox({
                                         />
                                     </TableCell>
 
+                                    {/* type  */}
                                     <TableCell className="text-center">
                                         <Select
                                             value={trade.type}
@@ -220,22 +213,7 @@ export default function ManualBox({
                                         </Select>
                                     </TableCell>
 
-                                    <TableCell>
-                                        <PriceInput
-                                            value={trade.buyPrice}
-                                            onChange={(val) => onChange(index, "buyPrice", val)}
-                                            placeholder="0.00"
-                                        />
-                                    </TableCell>
-
-                                    <TableCell>
-                                        <PriceInput
-                                            value={trade.sellPrice}
-                                            onChange={(val) => onChange(index, "sellPrice", val)}
-                                            placeholder="0.00"
-                                        />
-                                    </TableCell>
-
+                                    {/* buy date  */}
                                     <TableCell>
                                         <Input
                                             type="datetime-local"
@@ -245,15 +223,36 @@ export default function ManualBox({
                                         />
                                     </TableCell>
 
+                                    {/* sell date  */}
                                     <TableCell>
                                         <Input
                                             type="datetime-local"
                                             value={trade.sellDate}
                                             onChange={(e) => onChange(index, "sellDate", e.target.value)}
-                                            className="text-sm h-9"
+                                            className="text-sm h-9 "
                                         />
                                     </TableCell>
 
+                                    {/* buy price  */}
+                                    <TableCell>
+                                        <PriceInput
+                                            value={trade.buyPrice}
+                                            onChange={(val) => onChange(index, "buyPrice", val)}
+                                            placeholder="0.00"
+                                        />
+                                    </TableCell>
+
+                                    {/* sell price  */}
+                                    <TableCell>
+                                        <PriceInput
+                                            value={trade.sellPrice}
+                                            onChange={(val) => onChange(index, "sellPrice", val)}
+                                            placeholder="0.00"
+                                        />
+                                    </TableCell>
+
+
+                                    {/* quantity  */}
                                     <TableCell>
                                         <QuantityInput
                                             value={trade.quantity}
@@ -261,55 +260,17 @@ export default function ManualBox({
                                         />
                                     </TableCell>
 
+                                    {/* Notes */}
                                     <TableCell>
-                                        <Select
-                                            value={trade.brokerName}
-                                            onValueChange={(value) => onChange(index, "brokerName", value)}
-                                        >
-                                            <SelectTrigger className="text-sm h-9">
-                                                <SelectValue placeholder="Select" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="zerodha">Zerodha</SelectItem>
-                                                <SelectItem value="groww">Groww</SelectItem>
-                                                <SelectItem value="upstox">Upstox</SelectItem>
-                                                <SelectItem value="angelbroking">Angel Broking</SelectItem>
-                                                <SelectItem value="other">Other</SelectItem>
-                                            </SelectContent>
-                                        </Select>
+                                        <Textarea
+                                            id={index.toString()}
+                                            className="[resize:none] min-h-6 max-h-18 scrollbar-none"
+                                            placeholder="Enter a Notes"
+                                            value={trade.notes}
+                                            onChange={(e) => onChange(index, "notes", e.target.value)}
+                                        />
                                     </TableCell>
 
-                                    <TableCell>
-                                        <Select
-                                            value={trade.tradetype}
-                                            onValueChange={(value) => onChange(index, "tradetype", value)}
-                                        >
-                                            <SelectTrigger className="text-sm h-9">
-                                                <SelectValue />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="equity">Equity</SelectItem>
-                                                <SelectItem value="fno">F&O</SelectItem>
-                                                <SelectItem value="crypto">Crypto</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </TableCell>
-
-                                    <TableCell>
-                                        <Select
-                                            value={trade.exchange}
-                                            onValueChange={(value) => onChange(index, "exchange", value)}
-                                        >
-                                            <SelectTrigger className="text-sm h-9">
-                                                <SelectValue />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="NSE">NSE</SelectItem>
-                                                <SelectItem value="BSE">BSE</SelectItem>
-                                                <SelectItem value="MCX">MCX</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -332,7 +293,7 @@ export default function ManualBox({
                                 </h3>
                                 <p className="text-xs text-muted-foreground">
                                     {trade.symbol && `${trade.symbol} • `}
-                                    {trade.exchange || "No Exchange"}
+
                                 </p>
                             </div>
                             <button
@@ -347,19 +308,8 @@ export default function ManualBox({
                         </div>
 
                         {/* Form Fields */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            {/* Stock Name */}
-                            <div className="space-y-1">
-                                <label className="text-xs font-medium text-muted-foreground">
-                                    Stock Name
-                                </label>
-                                <Input
-                                    placeholder="e.g., Reliance"
-                                    value={trade.stockName}
-                                    onChange={(e) => onChange(index, "stockName", e.target.value)}
-                                    className="text-sm h-9"
-                                />
-                            </div>
+                        <div className="grid grid-cols-2 gap-3">
+
 
                             {/* Symbol */}
                             <div className="space-y-1">
@@ -393,14 +343,29 @@ export default function ManualBox({
                                 </Select>
                             </div>
 
-                            {/* Quantity */}
-                            <div className="space-y-1">
+                            {/* Buy Date */}
+                            <div className="space-y-1 ">
                                 <label className="text-xs font-medium text-muted-foreground">
-                                    Quantity
+                                    Buy Date
                                 </label>
-                                <QuantityInput
-                                    value={trade.quantity}
-                                    onChange={(val) => onChange(index, "quantity", val)}
+                                <Input
+                                    type="datetime-local"
+                                    value={trade.buyDate}
+                                    onChange={(e) => onChange(index, "buyDate", e.target.value)}
+                                    className="text-sm h-9"
+                                />
+                            </div>
+
+                            {/* Sell Date */}
+                            <div className="space-y-1 ">
+                                <label className="text-xs font-medium text-muted-foreground">
+                                    Sell Date
+                                </label>
+                                <Input
+                                    type="datetime-local"
+                                    value={trade.sellDate}
+                                    onChange={(e) => onChange(index, "sellDate", e.target.value)}
+                                    className="text-sm h-9"
                                 />
                             </div>
 
@@ -428,93 +393,36 @@ export default function ManualBox({
                                 />
                             </div>
 
-                            {/* Buy Date */}
-                            <div className="space-y-1 sm:col-span-2">
+                            {/* Quantity */}
+                            <div className="space-y-1">
                                 <label className="text-xs font-medium text-muted-foreground">
-                                    Buy Date
+                                    Quantity
                                 </label>
-                                <Input
-                                    type="datetime-local"
-                                    value={trade.buyDate}
-                                    onChange={(e) => onChange(index, "buyDate", e.target.value)}
-                                    className="text-sm h-9"
+                                <QuantityInput
+                                    value={trade.quantity}
+                                    onChange={(val) => onChange(index, "quantity", val)}
                                 />
                             </div>
 
-                            {/* Sell Date */}
-                            <div className="space-y-1 sm:col-span-2">
+                            {/* Notes */}
+                            <div className="space-y-1">
                                 <label className="text-xs font-medium text-muted-foreground">
-                                    Sell Date
+                                    Notes
                                 </label>
-                                <Input
-                                    type="datetime-local"
-                                    value={trade.sellDate}
-                                    onChange={(e) => onChange(index, "sellDate", e.target.value)}
-                                    className="text-sm h-9"
+                                <Textarea
+                                    id={index.toString()}
+                                    className="[resize:none] min-h-16 scrollbar-none"
+                                    placeholder="Enter a Notes"
+                                    value={trade.notes}
+                                    onChange={(e) => onChange(index, "notes", e.target.value)}
                                 />
                             </div>
 
-                            {/* Broker */}
-                            <div className="space-y-1">
-                                <label className="text-xs font-medium text-muted-foreground">
-                                    Broker
-                                </label>
-                                <Select
-                                    value={trade.brokerName}
-                                    onValueChange={(value) => onChange(index, "brokerName", value)}
-                                >
-                                    <SelectTrigger className="text-sm h-9">
-                                        <SelectValue placeholder="Select broker" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="zerodha">Zerodha</SelectItem>
-                                        <SelectItem value="groww">Groww</SelectItem>
-                                        <SelectItem value="upstox">Upstox</SelectItem>
-                                        <SelectItem value="angelbroking">Angel Broking</SelectItem>
-                                        <SelectItem value="other">Other</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
 
-                            {/* Trade Type */}
-                            <div className="space-y-1">
-                                <label className="text-xs font-medium text-muted-foreground">
-                                    Trade Type
-                                </label>
-                                <Select
-                                    value={trade.tradetype}
-                                    onValueChange={(value) => onChange(index, "tradetype", value)}
-                                >
-                                    <SelectTrigger className="text-sm h-9">
-                                        <SelectValue placeholder="Select type" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="equity">Equity</SelectItem>
-                                        <SelectItem value="fno">F&O</SelectItem>
-                                        <SelectItem value="crypto">Crypto</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
 
-                            {/* Exchange */}
-                            <div className="space-y-1 sm:col-span-2">
-                                <label className="text-xs font-medium text-muted-foreground">
-                                    Exchange
-                                </label>
-                                <Select
-                                    value={trade.exchange}
-                                    onValueChange={(value) => onChange(index, "exchange", value)}
-                                >
-                                    <SelectTrigger className="text-sm h-9">
-                                        <SelectValue placeholder="Select exchange" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="NSE">NSE</SelectItem>
-                                        <SelectItem value="BSE">BSE</SelectItem>
-                                        <SelectItem value="MCX">MCX</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
+
+
+
                         </div>
                     </div>
                 ))}

@@ -22,9 +22,7 @@ interface TradeFormData {
   buyDate: string;
   sellDate: string;
   quantity: string;
-  brokerName: string;
-  tradetype: string;
-  exchange: string;
+  notes:string
 }
 
 export default function UploadDialogManual({ children }: { children: ReactNode }) {
@@ -38,9 +36,7 @@ export default function UploadDialogManual({ children }: { children: ReactNode }
       buyDate: "",
       sellDate: "",
       quantity: "",
-      brokerName: "",
-      tradetype: "equity",
-      exchange: "NSE",
+      notes:""
     },
   ]);
 
@@ -62,9 +58,7 @@ export default function UploadDialogManual({ children }: { children: ReactNode }
         buyDate: "",
         sellDate: "",
         quantity: "",
-        brokerName: "",
-        tradetype: "equity",
-        exchange: "NSE",
+        notes:""
       },
     ]);
   };
@@ -83,15 +77,15 @@ export default function UploadDialogManual({ children }: { children: ReactNode }
         {children}
       </AlertDialogTrigger>
 
-      <AlertDialogContent className="w-full max-w-6xl p-0 overflow-hidden flex flex-col max-h-[80vh]">
+      <AlertDialogContent className="max-w-[90%] p-0 overflow-hidden flex flex-col max-h-[80vh]">
         {/* HEADER - fixed */}
         <AlertDialogHeader className="sticky top-0 z-20 bg-background border-b border-border">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-6 py-3 gap-3 sm:gap-0">
+          <div className="flex flex-col sm:flex-row justify-between items-end  px-4 sm:px-6 py-3 gap-3 sm:gap-0">
             <div>
-              <h2 className="text-lg sm:text-xl font-semibold text-foreground">Manual Trade Entry</h2>
-              <p className="text-xs sm:text-sm text-muted-foreground">Enter your trades below</p>
+              <h2 className="text-lg  font-semibold text-foreground">Manual Trade Entry</h2>
+              <p className="text-sm text-muted-foreground">Enter your trades below</p>
             </div>
-            <Button onClick={handleAddRow} variant="default" size="sm" className="gap-2 w-full sm:w-auto">
+            <Button onClick={handleAddRow} variant="default" size="sm" className="gap-2 w-auto">
               <Plus className="w-4 h-4" />
               Add Trade
             </Button>
@@ -110,7 +104,7 @@ export default function UploadDialogManual({ children }: { children: ReactNode }
         </ScrollArea>
 
         {/* FOOTER - fixed */}
-        <AlertDialogFooter className="sticky bottom-0 z-20 bg-background border-t border-border p-4 sm:p-6">
+        <AlertDialogFooter className="sticky bottom-0 z-20 bg-background border-t border-border p-4 ">
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={handleSave}>Save</AlertDialogAction>
         </AlertDialogFooter>
