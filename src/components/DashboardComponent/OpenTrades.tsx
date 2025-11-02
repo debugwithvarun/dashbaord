@@ -140,7 +140,7 @@ export default function Component() {
       <div className="w-full max-w-none rounded-md border p-2  shadow-sm">
         <div className="max-h-91 overflow-y-auto scrollbar-hide ">
           <Table className="w-full [&_td]:border-border [&_th]:border-border border-separate border-spacing-0 [&_tfoot_td]:border-t [&_th]:border-b [&_tr]:border-none [&_tr:not(:last-child)_td]:border-b">
-            <TableHeader className="bg-background/95 sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <TableHeader className="bg-background/95 sticky top-0 z-10 backdrop-blur supports-[backdrop-filter]:bg-background/60">
               <TableRow className="hover:bg-transparent">
                 <TableHead className="font-semibold">Name</TableHead>
                 <TableHead className="font-semibold">Email</TableHead>
