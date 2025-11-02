@@ -35,7 +35,7 @@ export function Toolbox() {
       <div className="relative inline-flex items-center justify-center">
 
         {/* manual entry  */}
-        <Tooltip delayDuration={0}>
+        <Tooltip delayDuration={0} >
 
           <UploadDialogManual >
             <TooltipTrigger asChild>

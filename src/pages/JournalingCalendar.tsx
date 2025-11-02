@@ -1,3 +1,4 @@
+import { useState } from "react"
 import AIInsight from "../components/JournalingCalender/AIInsight"
 import DailyMetrics from "../components/JournalingCalender/DailyMetrics"
 import JournalingCalendarShimmer from "../components/JournalingCalender/JCShimmer"
@@ -7,7 +8,12 @@ import TradeDetails from "../components/JournalingCalender/TradeDetails"
 import Tradingcalender from "../components/JournalingCalender/TradingCalender"
 
 const JournalingCalendar = () => {
-  return <JournalingCalendarShimmer/>
+    const [loading,setLoading]=useState(true)
+    setTimeout(()=>{
+      setLoading(false)
+      console.log(loading)
+    },1000)
+  if(loading) return <JournalingCalendarShimmer/>
   return (
     <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-4 ">
   

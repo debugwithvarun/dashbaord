@@ -1,4 +1,5 @@
 
+import { useState } from "react"
 import Dropdown from "../components/DashboardComponent/Dropdown"
 import DashboardShimmer from "../components/DashboardComponent/DshboardShimmer"
 import DualCalendar from "../components/DashboardComponent/DualCalender"
@@ -9,7 +10,12 @@ import OpenTrades from "../components/DashboardComponent/OpenTrades"
 
 
 const Dashboard = () => {
-  return <DashboardShimmer/>
+  const [loading,setLoading]=useState(true)
+  setTimeout(()=>{
+    setLoading(false)
+    console.log(loading)
+  },1000)
+  if (loading)return <DashboardShimmer/>
   return (
     <div className="w-full items-center flex flex-col gap-2">
       <MetricCard />
