@@ -212,8 +212,9 @@ export default function ManualBox({
                                     </TableCell>
 
                                     {/* Date  */}
-                                    <TableCell  className="flex flex-col gap-2">
-                                        <Input
+                                    <TableCell>
+                                       <div className="w-full flex gap-2 flex-col">
+                                       <Input
                                             type="datetime-local"
                                             value={trade.buyDate}
                                             onChange={(e) => onChange(index, "buyDate", e.target.value)}
@@ -225,13 +226,15 @@ export default function ManualBox({
                                             onChange={(e) => onChange(index, "sellDate", e.target.value)}
                                             className="text-sm h-9 "
                                         />
+                                       </div>
                                     </TableCell>
 
                                    
 
                                     {/* Price  */}
-                                    <TableCell className="flex flex-col gap-2">
-                                        <PriceInput
+                                    <TableCell>
+                                    <div className="flex w-full flex-col gap-2">
+                                    <PriceInput
                                             value={trade.buyPrice}
                                             onChange={(val) => onChange(index, "buyPrice", val)}
                                             placeholder="0.00"
@@ -241,6 +244,7 @@ export default function ManualBox({
                                             onChange={(val) => onChange(index, "sellPrice", val)}
                                             placeholder="0.00"
                                         />
+                                    </div>
                                     </TableCell>
 
                                  
@@ -258,7 +262,7 @@ export default function ManualBox({
                                     <TableCell>
                                         <Textarea
                                             id={index.toString()}
-                                            className="[resize:none] min-h-6 max-h-18 scrollbar-none"
+                                            className="[resize:none]  scrollbar-none"
                                             placeholder="Enter a Notes"
                                             value={trade.notes}
                                             onChange={(e) => onChange(index, "notes", e.target.value)}
