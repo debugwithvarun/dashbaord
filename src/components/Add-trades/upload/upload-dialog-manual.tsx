@@ -1,4 +1,6 @@
-import { useState, type ReactNode } from "react"
+"use client";
+
+import { useState, useRef, type ReactNode } from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -7,7 +9,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTrigger,
-} from "../../ui/alert-dialog"
+} from "../../ui/alert-dialog";
 import ManualBox from "./manual-box";
 import { Button } from "../../ui/button";
 import { Plus } from "lucide-react";
@@ -22,7 +24,7 @@ interface TradeFormData {
   buyDate: string;
   sellDate: string;
   quantity: string;
-  notes:string
+  notes: string;
 }
 
 export default function UploadDialogManual({ children }: { children: ReactNode }) {
@@ -36,9 +38,12 @@ export default function UploadDialogManual({ children }: { children: ReactNode }
       buyDate: "",
       sellDate: "",
       quantity: "",
-      notes:""
+      notes: "",
     },
   ]);
+
+  // 🔽 Ref for auto-scrolling
+  const endRef = useRef<HTMLDivElement | null>(null);
 
   const handleInputChange = (index: number, field: keyof TradeFormData, value: string) => {
     const updated = [...trades];
@@ -47,8 +52,8 @@ export default function UploadDialogManual({ children }: { children: ReactNode }
   };
 
   const handleAddRow = () => {
-    setTrades([
-      ...trades,
+    setTrades((prev) => [
+      ...prev,
       {
         stockName: "",
         symbol: "",
@@ -58,9 +63,14 @@ export default function UploadDialogManual({ children }: { children: ReactNode }
         buyDate: "",
         sellDate: "",
         quantity: "",
-        notes:""
+        notes: "",
       },
     ]);
+
+    // ⏳ Wait until the new row renders, then scroll into view
+    setTimeout(() => {
+      endRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   const handleRemoveRow = (index: number) => {
@@ -73,16 +83,14 @@ export default function UploadDialogManual({ children }: { children: ReactNode }
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        {children}
-      </AlertDialogTrigger>
+      <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
 
       <AlertDialogContent className="max-w-[90%] p-0 overflow-hidden flex flex-col max-h-[80vh]">
         {/* HEADER - fixed */}
         <AlertDialogHeader className="sticky top-0 z-20 bg-background border-b border-border">
           <div className="flex flex-col sm:flex-row justify-between items-end  px-4 sm:px-6 py-3 gap-3 sm:gap-0">
             <div>
-              <h2 className="text-lg  font-semibold text-foreground">Manual Trade Entry</h2>
+              <h2 className="text-lg font-semibold text-foreground">Manual Trade Entry</h2>
               <p className="text-sm text-muted-foreground">Enter your trades below</p>
             </div>
             <Button onClick={handleAddRow} variant="default" size="sm" className="gap-2 w-auto">
@@ -94,21 +102,18 @@ export default function UploadDialogManual({ children }: { children: ReactNode }
 
         {/* SCROLLABLE CONTENT */}
         <ScrollArea className="flex-1 overflow-auto scrollbar-none">
-    
-          <ManualBox
-            trades={trades}
-            onChange={handleInputChange}
-            onRemoveRow={handleRemoveRow}
-          />
-          <ScrollBar orientation="horizontal" className="h-0"/>
+          <ManualBox trades={trades} onChange={handleInputChange} onRemoveRow={handleRemoveRow} />
+          {/* Invisible element to scroll to */}
+          <div ref={endRef} />
+          <ScrollBar orientation="horizontal" className="h-0" />
         </ScrollArea>
 
         {/* FOOTER - fixed */}
-        <AlertDialogFooter className="sticky bottom-0 z-20 bg-background border-t border-border p-4 ">
+        <AlertDialogFooter className="sticky bottom-0 z-20 bg-background border-t border-border p-4">
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={handleSave}>Save</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  )
+  );
 }
